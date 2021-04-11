@@ -6,6 +6,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Permissions from 'expo-permissions';
 import * as MediaLibrary from 'expo-media-library';
+import * as ImagePicker from 'expo-image-picker';
+
 
 
 export default function App() {
@@ -28,6 +30,13 @@ export default function App() {
     (async () => {
       const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
       setHasPermission(status === 'granted');
+    })();
+
+    (async()=>{
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') {
+      alert('Sorry, we need camera roll permissions to make this work!');
+    }
     })();
 
   }, []);
@@ -68,6 +77,25 @@ export default function App() {
       })
   }
 
+ async function searhPicture(){
+  let result = await ImagePicker.launchImageLibraryAsync({
+    mediaTypes: ImagePicker.MediaTypeOptions.All,
+    allowsEditing: true,
+    aspect: [4, 3],
+    quality: 1,
+  });
+    //callback estta relacionado uma função anonima e retorna
+    //algum parametro
+       if(result.cancelled){
+         alert('Cancelado')
+       }else{
+          setCheckPicture(result.uri)
+          setOpen(true);
+
+       }
+
+  }
+
   return (
 
     <SafeAreaView style={styles.container}>
@@ -104,6 +132,12 @@ export default function App() {
       <TouchableOpacity style={styles.button} onPress={takePicture} >
 
         <FontAwesome name="camera" size={25} color="#fff" />
+     
+      </TouchableOpacity  >
+ 
+      <TouchableOpacity style={styles.button} onPress={searhPicture}>
+
+         <FontAwesome name="photo" size={25} color="#ffff" />
 
       </TouchableOpacity>
 
