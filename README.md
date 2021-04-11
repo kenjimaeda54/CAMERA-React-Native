@@ -6,7 +6,7 @@ Pequena aplicação com camera,
 ### expo install expo-media-library
 ### expo install expo-permisssions
 
-### Recurso
+### Recursos
 - Apliquei metodos de abrir modal apos uma foto ser retirada
 - Apliquei icones da biblioteca expo,não e necessário importar nenhuma biblioteca caso esteja usando expo
 - Icones usados foram da familia  FontAwesome, documentação completa https://docs.expo.io/guides/icons/#expovector-icons
