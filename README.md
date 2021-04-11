@@ -1,6 +1,6 @@
 # CAMERA-React-Native
 Pequena aplicação com camera,
-# Pequena aplicação com camera. Tirando foto é salvando.
+# Pequena aplicação com camera. Tirando foto,salvando e buscando
 ### Dependencias do projeto
 ### expo install expo-camera
 ### expo install expo-media-library
